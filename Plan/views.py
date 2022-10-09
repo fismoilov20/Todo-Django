@@ -121,7 +121,7 @@ def logoutView(request):
 def todo_delete(req, num):                  ## request is NEEDED
     if req.user.is_authenticated:
         td = Todo.objects.get(id=num)
-        if td in Todo.objects.filter(student__user=req.user):
+        if req.user == td.student.user:
             td.delete()
         return redirect('/todo/')
 
