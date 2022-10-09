@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <br>
+    <hr>
+    <br>
+    <form method="post" action="/student_edit/{{student.id}}/">{% csrf_token %}
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" value="{{student.name}}"><br>
+        <label for="age">Age: </label>
+        <input type="number" name="age" id="age" value="{{student.age}}"><br>
+
+        <label for="course">Course: </label>
+        <input type="number" name="course" id="course" value="{{student.course}}"> <br>
+
+        <label for="std_id">StudentID: </label>
+        <input type="number" name="std_id" id="std_id" value="{{student.std_id}}"> <br>
+
+        <button type="submit">Edit</button>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <br>
+    <hr>
+    <br>
+    <form method="post" action="/plan_edit/{{plan.id}}/">{% csrf_token %}
+        <label for="heading">Heading: </label>
+        <input type="text" name="heading" id="heading" value="{{plan.heading}}"> <br>
+        <label>Date: </label>
+        <input type="date" name="date" value="{{plan.date}}"> <br>
+        <label>Details: </label>
+        <input type="text" name="details" value="{{plan.details}}"> <br>
+        <label>Done: </label>
+        {% if plan.done == True %}
+        <input type="checkbox" name="done" checked> <br>
+        {% else %}
+        <input type="checkbox" name="done"> <br>
+        {% endif %}
+            
+        <label for="student">Student: </label>
+        <select name="student" id="student">
+            {% for i in students %}
+            {% if i.id == 1 %}
+            <option value="{{plan.student.id}}" selected> {{plan.student.name}}</option>
+            <option value="{{i.id}}"> {{i.name}}</option>
+            {% else %}
+            <option value="{{i.id}}"> {{i.name}} </option>
+            {% endif %}
+            {% endfor %} 
+        </select> <br>
+        <button type="submit">Edit</button>
+    </form>
+
+</body>
+</html>

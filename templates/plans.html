@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plans</title>
+</head>
+<body>
+    <h1>Plans' list: </h1>
+    <br>
+    <hr>
+    <br>
+    {% for i in plans %}
+    <h2 style="display:inline-block;">{{i.id}}. {{i.heading}}, {{i.student.name}}</h2>
+    <a href="/plans_delete/{{i.id}}"><button>Delete</button></a>
+    <a href="/plan_edit/{{i.id}}"><button>Edit</button></a> <br>
+    {% endfor %}
+
+    <hr>
+
+    <form method="post" action="/plans/">{% csrf_token %}
+        <label for="heading">Heading: </label>
+        <input type="text" name="heading" id="heading"> <br>
+        <label>Date: </label>
+        <input type="date" name="date"> <br>
+        <label>Details: </label>
+        <input type="text" name="details"> <br>
+        <label>Done: </label>
+        <input type="checkbox" name="done"> <br>
+        <label for="student">Student: </label>
+        <select name="student" id="student">
+            {% for i in students %}
+            <option value="{{i.id}}">{{i.name}}</option>
+            {% endfor %}
+        </select> <br>
+        <button type="submit">Add</button>
+
+    </form>
+</body>
+</html>
