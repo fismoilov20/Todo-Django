@@ -1,7 +1,31 @@
-from django.shortcuts import render, redirect
 from .models import *
+from .serializers import *
+
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import *
 from django.contrib.auth import authenticate, login, logout
+
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.decorators import action
+
+
+class StudentViewSet(ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class PlanViewSet(ModelViewSet):
+    queryset = Plan.objects.filter()
+    serializer_class = PlanSerializer
+
+class AccountViewSet(ModelViewSet):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
+
+class TodoViewSet(ModelViewSet):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
+
+
 
 # Create your views here.
 

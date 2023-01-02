@@ -25,7 +25,7 @@ class Account(models.Model):
     group = models.CharField(max_length=50, blank=True)
     student_id = models.CharField(max_length=50, blank=True)
     tel = models.CharField(max_length=50, blank=True)
-    user=models.OneToOneField(User, on_delete=models.CASCADE)
+    user=models.OneToOneField(User, on_delete=models.CASCADE)                   # OneToOne
     def __str__(self) -> str:
         return self.fullname
 
@@ -34,6 +34,6 @@ class Todo(models.Model):
     date = models.DateTimeField(null=True, blank=True)
     details = models.CharField(max_length=300)
     done = models.BooleanField(default=False)
-    student = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)
+    student = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)   # OneToOne
     def __str__(self) -> str:
         return f"{self.heading}"
